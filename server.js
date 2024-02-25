@@ -8,8 +8,10 @@ const UserRouter = require("./Routes/userRoutes");
 mongoose.set("strictQuery",false);
 
 const app =  express();
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));  
+app.use(cors());  
 app.use(express.json());
+app.get("/",(req,res) => {
+ res.setHeader("Access-Control-Allow-Credentials","true");
 app.use(express.urlencoded({extended: true}));
 dotenv.config();
 app.use(cookieParser());
